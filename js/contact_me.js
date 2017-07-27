@@ -10,23 +10,21 @@ $(function() {
         submitSuccess: function($form, event) {
             event.preventDefault(); // prevent default submit behaviour
             // get values from FORM
-            var name = $("input#name").val();
-            var email = $("input#email").val();
-            var phone = $("input#phone").val();
-            var message = $("textarea#message").val();
-            var firstName = name; // For Success/Failure Message
-            // Check for white space in name for Success/Fail message
-            if (firstName.indexOf(' ') >= 0) {
-                firstName = name.split(' ').slice(0, -1).join(' ');
-            }
+            var form_name = $("input#form_name").val();
+            var form_email = $("input#form_email").val();
+            var form_num_mod = $("input#form_num_mod").val();
+            var form_num_result = $("input#form_num_result").val();
+            var form_text = $("textarea#form_text").val();
+
             $.ajax({
-                url: "././mail/contact_me.php",
+                url: "/razorfuse-flask/",
                 type: "POST",
                 data: {
-                    name: name,
-                    phone: phone,
-                    email: email,
-                    message: message
+                    form_name: form_name,
+                    form_email: form_email,
+                    form_num_mod: form_num_mod,
+                    form_num_result: form_num_result,
+                    form_text: form_text
                 },
                 cache: false,
                 success: function() {
@@ -47,7 +45,7 @@ $(function() {
                     $('#success').html("<div class='alert alert-danger'>");
                     $('#success > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
                         .append("</button>");
-                    $('#success > .alert-danger').append($("<strong>").text("Sorry " + firstName + ", it seems that my mail server is not responding. Please try again later!"));
+                    $('#success > .alert-danger').append($("<strong>").text("Sorry " + form_name + ", it seems that something was wrong with your submission."));
                     $('#success > .alert-danger').append('</div>');
                     //clear all fields
                     $('#contactForm').trigger("reset");

@@ -19,7 +19,7 @@
     });
 
     // Closes the Responsive Menu on Menu Item Click
-    $('.navbar-collapse ul li a').click(function(){ 
+    $('.navbar-collapse ul li a').click(function(){
             $('.navbar-toggle:visible').click();
     });
 
@@ -29,5 +29,9 @@
             top: 100
         }
     })
+
+    var form_offset = Math.floor(Math.random() * 20);
+    $("#form_num_mod").val(form_offset);
+    $("#form_num_mod_text").html(form_offset.toString());
 
 })(jQuery); // End of use strict
