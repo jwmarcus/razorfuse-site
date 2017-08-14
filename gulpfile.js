@@ -67,7 +67,7 @@ gulp.task('copy-vendor', function() {
       '!node_modules/font-awesome/*.txt',
       '!node_modules/font-awesome/*.md',
       '!node_modules/font-awesome/*.json',
-      '!node_modules/font-awesome/{less,less/**}', // One space only!
+      '!node_modules/font-awesome/{less,less/**}', // No space inbetween items in array
       '!node_modules/font-awesome/{scss,scss/**}'
     ])
     .pipe(gulp.dest('vendor/font-awesome'))
